@@ -1,8 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login";
 import Home from "../screens/Home";
-import Pergunta from "../screens/Pergunta";
-import Cadastro from "../screens/Cadastro";
+import Question from "../screens/Question";
+import Register from "../screens/Register";
 
 export default props => {
     const Stack = createStackNavigator()
@@ -17,8 +17,8 @@ export default props => {
                 headerShown: false,
             }}/>
              <Stack.Screen
-            name="Cadastro" 
-            component={Cadastro}
+            name="Register" 
+            component={Register}
             options={{
                 title: "",
                 headerTransparent: true,
@@ -27,14 +27,6 @@ export default props => {
             <Stack.Screen
             name="Home" 
             component={Home}
-            options={{
-                title: "",
-                headerTransparent: true,
-                headerShown: false,
-            }}/>
-            <Stack.Screen
-            name="Pergunta" 
-            component={Pergunta}
             options={{
                 title: "",
                 headerTransparent: true,

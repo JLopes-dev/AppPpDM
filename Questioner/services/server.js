@@ -1,14 +1,18 @@
-const express = require('express')
+const express = require('express') 
 const mongoose = require('mongoose')
 const app = express()
 const PORT = 3001
+
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+
 
 // Conectando com o banco de dados
 mongoose.connect('mongodb://127.0.0.1:27017/Questioner')
 .then(() => console.log('mongoose...'))
 .catch(err => console.log(` error: ${err}`))
 
-// Schema do Banco
+// Schema da collection de Usuários
 const User = mongoose.model('users', new mongoose.Schema({
     email: {
         type: String,
@@ -20,20 +24,36 @@ const User = mongoose.model('users', new mongoose.Schema({
     }
 }))
 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+// Schema da collection de Perguntas
+const Question = mongoose.model('questions', new mongoose.Schema({
+    questionText: {
+        type: String,
+        require: true
+    }
+}))
 
-app.post('/user/cadastro', async (req, res) => {
+app.post('/user/register', async (req, res) => {
     const { email, password } = req.body;
     await User.create({email, password})
-    res.send({ message: 'Dados criados com sucesso!' })
+    res.status(201).send({ message: 'Data created with successfully' })
 })
 
-app.post('/user/cadastro/:email/:password', async (req, res) => {
+app.post('/user/register/:email/:password', async (req, res) => {
     const data = await User.findOne({ email: req.params.email, password: req.params.password})
     if(!data) return;
-    res.send({ message: 'logado' })
+    res.status(200).send({ message: 'Logged in' })
     
 })
 
-app.listen(3001, () => console.log(`Server rodando na porta ${PORT}`))
+app.post('/question/create', async (req, res) => {
+    const { questionText } = req.body;
+    await Question.create({ questionText })
+    res.status(201).send({ message: "Question created in the database" })
+})
+
+app.get('/question/showquestions', async (req, res) => {
+    const data = await Question.find()
+    res.send(200).send({ allQuestions: data});
+})
+
+app.listen(3001, () => console.log(`Server listening on PORT: ${PORT}`))

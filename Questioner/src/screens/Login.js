@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import Botao from "../components/Botao";
+import Button from "../components/Button";
 import { useNavigation } from '@react-navigation/native'
 import Input from "../components/Input";
 import axios from "axios";
@@ -8,7 +8,7 @@ import axios from "axios";
 export default props => {
     const navigation = useNavigation()
     const cadastrar = () => {
-        navigation.navigate('Cadastro')
+        navigation.navigate('Register')
     }
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -19,7 +19,7 @@ export default props => {
         setPassword(e)
     }
     const home = async () => {
-        await axios.post(`http://192.168.0.109:3001/user/cadastro/${email}/${password}`)
+        await axios.post(`http://192.168.0.103:3001/user/register/${email}/${password}`)
         navigation.navigate('Home')
     }
     return (
@@ -43,12 +43,12 @@ export default props => {
                 legenda='Senha'
                 style={styled.inputs}
             />
-            <Botao
+            <Button
                 onclick={() => home()}
                 legenda='Entrar'
                 style={styled.botao}
                 styleText={styled.textButton} />
-            <Botao
+            <Button
                 onclick={() => cadastrar()}
                 legenda='cadastre-se'
                 styleText={styled.link} />

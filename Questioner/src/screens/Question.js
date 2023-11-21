@@ -1,6 +1,6 @@
 import { Text, View } from "react-native"
 import { useNavigation } from "@react-navigation/native"
-import Botao from "../components/Botao"
+import Button from "../components/Button"
 export default props => {
     const navigation = useNavigation()
     const voltar = () => {
@@ -9,7 +9,7 @@ export default props => {
     return(
         <View>
             <Text>Cadastro</Text>
-            <Botao
+            <Button
             legenda='Voltar'
             onclick={() => voltar()}/>
         </View>
