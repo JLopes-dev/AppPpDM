@@ -2,13 +2,18 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const PORT = 3001
-
+const dotenv = require('dotenv')
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+if(process.env.DATABASE === 'local '){
+    dotenv.config({path: '../config/.env.local'})
+} 
 
 // Conectando com o banco de dados
-mongoose.connect('mongodb://127.0.0.1:27017/Questioner')
+
+mongoose.connect(process.env.DB)
+
 .then(() => console.log('mongoose...'))
 .catch(err => console.log(` error: ${err}`))
 
