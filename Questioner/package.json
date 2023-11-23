@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "dev": "set DATABASE=local && nodemon ./services/server.js",
+    "dev": "DATABASE=prod nodemon ./services/server.js",
     "test": "nodemon ./services/server.js",
     "start": "expo start",
     "android": "expo start --android",
