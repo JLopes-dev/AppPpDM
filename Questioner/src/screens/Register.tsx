@@ -4,21 +4,23 @@ import Button from "../components/Button";
 import { useNavigation } from '@react-navigation/native'
 import Input from "../components/Input";
 import axios from 'axios'
-export default props => {
+export default function Register() {
+
     const navigation = useNavigation()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const pegandoEmail = (e) => {
+
+    const pegandoEmail = (e: string) => {
         setEmail(e)
     }
-    const pegandoSenha = (e) => {
+    const pegandoSenha = (e: string) => {
         setPassword(e)
     }
     const data = { email, password }
     const home = async () => {
         const auth = await axios.post('http://192.168.0.103:3001/user/register', data)
         if(!auth) return;
-        navigation.navigate('Home')
+        navigation.navigate('Home' as never)
     }
     return (
         <View style={styled.container}>

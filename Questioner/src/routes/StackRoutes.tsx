@@ -4,7 +4,7 @@ import Home from "../screens/Home";
 import Question from "../screens/Question";
 import Register from "../screens/Register";
 
-export default props => {
+export default function StackRoutes() {
     const Stack = createStackNavigator()
     return(
         <Stack.Navigator>

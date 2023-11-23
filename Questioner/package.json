@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "dev": "DATABASE=prod nodemon ./services/server.js",
-    "test": "nodemon ./services/server.js",
+    "dev": "DATABASE=prod nodemon ./services/server.ts",
+    "test": "nodemon ./services/server.ts",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -31,7 +31,10 @@
     "unit-tests": "^1.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@types/react-native": "^0.72.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
   },
   "private": true
 }

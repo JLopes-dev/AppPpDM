@@ -1,7 +1,14 @@
 import { TextInput, View } from "react-native";
 
-export default props => {
-
+interface Props {
+    style: any
+    senha: boolean
+    legenda: string
+    valor: string
+    onChange: (e: string) => void
+}
+export default function Input(props: Props) {
+    
     return(
         <View style={{ width: '100%', alignItems: 'center' }}>
             <TextInput
