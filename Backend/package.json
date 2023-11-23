@@ -70,7 +70,7 @@
     "yn": "^3.1.1"
   },
   "scripts": {
-    "test": "set NODE_ENV=local && nodemon server.ts"
+    "test": "NODE_ENV=local nodemon App.ts"
   },
   "keywords": [],
   "author": "",
