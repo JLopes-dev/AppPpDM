@@ -8,7 +8,7 @@ export default function StackRoutes() {
     return(
         <Stack.Navigator>
             <Stack.Screen
-            name="Home" 
+            name="TabRoutes" 
             component={TabRoutes}
             options={{
                 title: "",
@@ -31,6 +31,7 @@ export default function StackRoutes() {
                 headerTransparent: true,
                 headerShown: false,
             }}/>
+            
         </Stack.Navigator>
     )
 }

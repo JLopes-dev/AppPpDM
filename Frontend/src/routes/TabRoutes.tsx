@@ -7,7 +7,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 export default function TabRoutes({  }) {
     const Tab = createBottomTabNavigator();
     return(
-        <Tab.Navigator screenOptions={{
+        <Tab.Navigator initialRouteName="Home" 
+        screenOptions={{
             tabBarLabelStyle: {
                 color: 'black'
             },
@@ -22,14 +23,21 @@ export default function TabRoutes({  }) {
             options={{
                 tabBarIcon: () => (
                     <MaterialCommunityIcons name="alpha-q-box" color='black' size={26} />
-                  )
+                  ),
+                title: "Perguntar",
+                headerTransparent: true,
+                headerShown: false,
             }}/>
-             <Tab.Screen name="Home" 
+             <Tab.Screen  
+            name="Home" 
             component={Home}
             options={{
                 tabBarIcon: () => (
                     <MaterialCommunityIcons name="home" color='black' size={26} />
-                  )
+                  ),
+                  title: "Início",
+                  headerTransparent: true,
+                  headerShown: false,
             }}/>
             <Tab.Screen 
             name="User" 
@@ -37,7 +45,10 @@ export default function TabRoutes({  }) {
             options={{
                 tabBarIcon: () => (
                     <MaterialCommunityIcons name="account" color='black' size={26} />
-                  )
+                  ),
+                  title: "Usuário",
+                  headerTransparent: true,
+                  headerShown: false,
             }}/>
         </Tab.Navigator>
     )
