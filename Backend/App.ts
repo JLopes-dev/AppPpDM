@@ -2,8 +2,8 @@ import dotenv from 'dotenv'
 import databaseConnect from './database/DatabaseConnect'
 import userRoutes from './routes/UserRoutes'
 
-if(process.env.NODE_ENV === 'local') {
-    dotenv.config({ path:'./config/.env.local'})
+if(process.env.NODE_ENV === 'dev') {
+    dotenv.config({ path:'./config/.env.dev'})
 }
 
 databaseConnect.connect(process.env.DB as string)
