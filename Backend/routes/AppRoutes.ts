@@ -24,6 +24,10 @@ class Routes {
     private routes() {
         routeConfigs.routesConfig()
         router.post('/user/register', userController.createUser)
+        router.get('/user/show/:email', userController.showOneUser)
+        router.post('/admin/show', userController.showAllUsers)
+        router.put('/user/update', userController.updateUser)
+        router.delete('/user/delete', userController.deleteUser)
         routeConfigs.afterTheRoutes()
     }
 
