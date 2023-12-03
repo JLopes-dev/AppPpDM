@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import User from "../models/UserModel";
 
 class UserController {
+
     public async createUser(req: Request, res: Response) {
         const { email, password } = req.body;
         await User.create({email, password})
@@ -9,5 +10,5 @@ class UserController {
     }
 }
 
-const userFunctions = new UserController()
-export default userFunctions
+const userController = new UserController()
+export default userController

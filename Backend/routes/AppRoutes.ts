@@ -1,25 +1,30 @@
-import express, { Request, Response } from 'express'
+import express, { Response } from 'express'
 import userController from '../controllers/UserController'
 const app = express()
 const router = express.Router()
 
-class UserRoutes {
-    private routesConfig() {
+
+class RoutesConfigs {
+
+    public routesConfig() {
         app.use(express.json())
         app.use(express.urlencoded({ extended: true }))
     }
-    private afterTheRoutes() {
+    public  afterTheRoutes() {
         app.use(router)
-        app.use((req: Request, res: Response) => {
+        app.use((res: Response) => {
             res.status(404).send({ message: "Route not found" })
         })
         app.listen(3001, () => console.log('Server listening at PORT 3001'));
     }
+}
+const routeConfigs = new RoutesConfigs()
+class Routes {
 
     private routes() {
-        this.routesConfig()
+        routeConfigs.routesConfig()
         router.post('/user/register', userController.createUser)
-        this.afterTheRoutes()
+        routeConfigs.afterTheRoutes()
     }
 
     public start() {
@@ -27,5 +32,5 @@ class UserRoutes {
     }
 }
 
-const userRoutes = new UserRoutes()
-export default userRoutes
+const routes = new Routes()
+export default routes
