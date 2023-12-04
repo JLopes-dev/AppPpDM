@@ -9,7 +9,7 @@ class UserController {
         res.status(201).send({ message: 'Data created with successfully' })
     }
     public async showOneUser(req: Request, res: Response) {
-        const data = await User.findOne({ userId: req.params.userId })
+        const data = await User.findOne({ email: req.params.email })
         res.status(200).send({ message: data })
     }
     public async showAllUsers(req: Request, res: Response) {

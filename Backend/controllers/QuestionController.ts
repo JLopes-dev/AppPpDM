@@ -3,7 +3,7 @@ import User from "../models/UserModel";
 import Question from "../models/QuestionModel";
 
 class QuestionController {
-
+    
     public async createQuestion(req: Request, res: Response) {
         const { email, title, description } = req.body
         const data = await User.findOne({ email })
@@ -16,6 +16,12 @@ class QuestionController {
             .catch((err) => console.log(" error " + err))
         }
         res.status(201).send({ message: "Question created with successfully" })
+    }
+    public async showQuestions(req: Request, res: Response) {
+        const { userId } = req.body        
+        const data = await Question.find({ userId })
+        res.send({ message: data })
+
     }
 }
 const questionController = new QuestionController()

@@ -1,4 +1,4 @@
-import express, { Response } from 'express'
+import express, { Request, Response } from 'express'
 import userController from '../controllers/UserController'
 import questionController from '../controllers/QuestionController'
 const app = express()
@@ -13,7 +13,7 @@ class RoutesConfigs {
     }
     public  afterTheRoutes() {
         app.use(router)
-        app.use((res: Response) => {
+        app.use((req: Request, res: Response) => {
             res.status(404).send({ message: "Route not found" })
         })
         app.listen(3001, () => console.log('Server listening at PORT 3001'));
@@ -25,12 +25,12 @@ class Routes {
     private routes() {
         routeConfigs.routesConfig()
         router.post('/user/register', userController.createUser)
-        router.get('/user/show/:userId', userController.showOneUser)
-        router.post('/admin/show', userController.showAllUsers)
         router.put('/user/update', userController.updateUser)
         router.delete('/user/delete', userController.deleteUser)
-
         router.post('/user/question/create', questionController.createQuestion)
+        router.get('/user/show/question/:userId', questionController.showQuestions)
+        router.get('/user/show/:email', userController.showOneUser)
+        router.post('/admin/show', userController.showAllUsers)
         routeConfigs.afterTheRoutes()
     }
 
