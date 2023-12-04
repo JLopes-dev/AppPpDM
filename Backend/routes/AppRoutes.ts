@@ -1,5 +1,6 @@
 import express, { Response } from 'express'
 import userController from '../controllers/UserController'
+import questionController from '../controllers/QuestionController'
 const app = express()
 const router = express.Router()
 
@@ -24,10 +25,12 @@ class Routes {
     private routes() {
         routeConfigs.routesConfig()
         router.post('/user/register', userController.createUser)
-        router.get('/user/show/:email', userController.showOneUser)
+        router.get('/user/show/:userId', userController.showOneUser)
         router.post('/admin/show', userController.showAllUsers)
         router.put('/user/update', userController.updateUser)
         router.delete('/user/delete', userController.deleteUser)
+
+        router.post('/user/question/create', questionController.createQuestion)
         routeConfigs.afterTheRoutes()
     }
 
