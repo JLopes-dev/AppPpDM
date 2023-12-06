@@ -23,6 +23,23 @@ class QuestionController {
         res.send({ message: data })
 
     }
+
+    public async createResponse(req: Request, res: Response) {
+        const { _id, response } = req.body;
+        Question.updateOne(
+            { _id },
+            {
+                $push: {
+                    response: response
+                }
+            }
+        ) .catch(err => {
+            console.log(` error ${err}`)
+        })
+        res.status(201).send({ message: "Response created with successfully" })
+    }
+
+    
 }
 const questionController = new QuestionController()
 export default questionController;

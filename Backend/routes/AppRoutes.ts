@@ -24,13 +24,18 @@ class Routes {
 
     private routes() {
         routeConfigs.routesConfig()
+
+        // Rotas de Usuários
         router.post('/user/register', userController.createUser)
-        router.put('/user/update', userController.updateUser)
-        router.delete('/user/delete', userController.deleteUser)
-        router.post('/user/question/create', questionController.createQuestion)
-        router.get('/user/show/question/:userId', questionController.showQuestions)
         router.get('/user/show/:email', userController.showOneUser)
         router.post('/admin/show', userController.showAllUsers)
+        router.put('/user/update', userController.updateUser)
+        router.delete('/user/delete', userController.deleteUser)
+       
+        // Rotas de questões e perguntas
+        router.post('/user/question/create', questionController.createQuestion)
+        router.get('/user/question/show/:userId', questionController.showQuestions)
+        router.post('/user/response/create', questionController.createResponse)
         routeConfigs.afterTheRoutes()
     }
 

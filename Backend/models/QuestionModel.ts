@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import responseSchema from "./ResponseModel";
 const questionSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -9,6 +9,8 @@ const questionSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    response: [responseSchema],
+    
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
 })
 

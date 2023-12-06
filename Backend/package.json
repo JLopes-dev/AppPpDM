@@ -70,6 +70,7 @@
     "yn": "^3.1.1"
   },
   "scripts": {
+    "test": "nodemon App.ts",
     "dev-linux": "NODE_ENV=dev nodemon App.ts",
     "prod-linux": "NODE_ENV=prod nodemon App.ts",
     "dev-windows": "set NODE_ENV=dev && nodemon App.ts",
